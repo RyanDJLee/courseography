@@ -27,7 +27,7 @@ andInputs :: [(String, Req)]
 andInputs = [("CSC165H1, CSC236H1", AND [J "CSC165H1", J "CSC236H1"])
            , ("CSC120H1, CSC121H1, CSC148H1", AND [J "CSC120H1", J "CSC121H1", J "CSC148H1"])]
 andorInputs :: [(String, Req)]
-andorInputs = [("CSC148H1/CSC207H1, CSC165H1/CSC236H1", AND [OR [J "CSC148H1", J "CSC207H1"], OR [J "CSC165H1", J "CSC236H1"]]) ]
+andorInputs = [("CSC148H1/CSC207H1, CSC165H1/CSC236H1", AND [OR [J "CSC148H1", J "CSC207H1"], OR [J "CSC165H1", J "CSC236H1"]])]
 
 parInputs :: [(String, Req)]
 parInputs = [("(CSC148H1)", J "CSC148H1")
