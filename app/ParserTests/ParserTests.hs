@@ -47,4 +47,4 @@ parTests = TestLabel "Basic and-or-paranthesized Requirement" $ TestList $ (map 
 
 -- functions for running tests in REPL
 reqTestSuite :: Test
-reqTestSuite = TestLabel "ReqParser tests" $ TestList [parTests]
+reqTestSuite = TestLabel "ReqParser tests" $ TestList [orTests, andTests, andorTests, parTests]
