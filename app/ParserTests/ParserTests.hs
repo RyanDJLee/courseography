@@ -42,6 +42,11 @@ fromInputs = [("1.0 FCE from the following: CSC148H1", FROM "1.0" $ J "CSC148H1"
            , ("2.0 FCEs from CSC108H1, CSC165H1/CSC148H1", FROM "2.0" $ AND [J "CSC108H1", OR [J "CSC165H1", J "CSC148H1"]])
            , ("2 fces from: MAT135H1, MAT136H1/ MAT137Y1", FROM "2" $ AND [J "MAT135H1",OR [J "MAT136H1",J "MAT137Y1"]])]
 
+fromParInputs:: [(String, Req)]
+fromParInputs = [("1.0 FCE from the following: (CSC148H1)", FROM "1.0" $ J "CSC148H1")
+           , ("2.0 FCEs from (CSC108H1, CSC165H1)/CSC148H1", FROM "2.0" $ OR [AND [J "CSC108H1", J "CSC165H1"], J "CSC148H1"])
+           , ("2 fces from: MAT135H1, (MAT136H1/ MAT137Y1)", FROM "2" $ AND [J "MAT135H1",OR [J "MAT136H1",J "MAT137Y1"]])]
+
 
 orTests :: Test
 orTests = TestLabel "Basic or Requirement"  $ TestList $ (map (createTest categoryParser) orInputs)
@@ -53,7 +58,9 @@ parTests :: Test
 parTests = TestLabel "Basic and-or-paranthesized Requirement" $ TestList $ (map (createTest categoryParser) parInputs)
 fromTests :: Test
 fromTests = TestLabel "Basic From Requirements with integer or float fces" $ TestList $ (map (createTest categoryParser) fromInputs)
+fromParTests :: Test
+fromParTests = TestLabel "Paranthesized From Requirements with integer or float fces" $ TestList $ (map (createTest categoryParser) fromParInputs)
 
 -- functions for running tests in REPL
 reqTestSuite :: Test
-reqTestSuite = TestLabel "ReqParser tests" $ TestList [fromTests]
+reqTestSuite = TestLabel "ReqParser tests" $ TestList [fromParTests]
