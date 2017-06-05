@@ -112,7 +112,7 @@ cutoffParser = Parsec.try coAftParser <|> coBefParser
 
 -- | Parser for requirements written within parentheses
 parParser :: Parser Req
-parParser = Parsec.between lParen rParen categoryParser
+parParser = Parsec.between lParen rParen andParser
 
 -- | Parser for raw text in a prerequisite, e.g., "proficiency in C/C++".
 -- Note that even if a course code appears in the middle of such text,
@@ -171,7 +171,7 @@ fromParser = do
 -- Semicolons are assumed to have the highest precedence.
 categoryParser :: Parser Req
 categoryParser = do
-    reqs <- Parsec.sepBy (fromParser <|> andParser <|> rawTextParser) semicolon
+    reqs <- Parsec.sepBy (Parsec.try (fromParser <|> andParser <|> rawTextParser)) semicolon
     Parsec.eof
     case reqs of
         [x] -> return x
