@@ -51,9 +51,10 @@ fromParInputs = [
       ("1.0 FCE from the following: (CSC148H1)", FCES "1.0" $ J "CSC148H1" "")
     , ("2.0 FCEs from CSC165H1/CSC148H1", FCES "2.0" $ OR [J "CSC165H1" "", J "CSC148H1" ""])
     , ("2 FCEs from: MAT135H1, MAT136H1/ MAT137Y1", FCES "2" $ AND [J "MAT135H1" "",OR [J "MAT136H1" "",J "MAT137Y1" ""]])
-    , ("0.5 from ANT204H1", J "")
-    , ("0.5 from: RSM260H1, RSM270H1", J "")
-    , ("0.5 in core ecology from: EEB319H1", J "")
+    , ("0.5 from ANT204H1", J "ANT204H1" "")
+    , ("0.5 from: RSM260H1, RSM270H1", AND [J "RSM260H1" "", J "RSM270H1" ""])
+    -- META "in core ecology" $ FROM "0.5" $ J "EEB319H1" ""
+    , ("0.5 in core ecology from: EEB319H1", FROM "0.5" $ J "EEB319H1" "")
     ]
 
 gradeBefInputs :: [(String, Req)]
