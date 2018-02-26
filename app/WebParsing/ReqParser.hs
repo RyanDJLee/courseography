@@ -13,8 +13,10 @@ fromSeparator = Parsec.spaces >> (Parsec.choice $ map (Parsec.try . Parsec.strin
             "FCEs",
             "FCE",
             "FCEs:",
-            "FCE:"
-    ]) >> (Parsec.choice $ map (Parsec.try . Parsec.string) [
+            "FCE:",
+            "from:",
+            "from"
+    ]) >> (Parsec.optional $  Parsec.choice $ map (Parsec.try . Parsec.string) [
             " of any of the following:",
             " from the following: ",
             " from:",
