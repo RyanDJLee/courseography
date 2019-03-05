@@ -17,7 +17,7 @@ beforeAll(() => {
 });
 
 describe("Enzyme vs RTF Tests with CSC104", () => {
-    it("should be rendered", () => {
+    it("should render Node component properly with proper course code", () => {
         const nodes = graph.find("Node");
         const csc104 = nodes.findWhere(node => node.key() === 'csc104');
 
@@ -32,15 +32,8 @@ describe("Enzyme vs RTF Tests with CSC104", () => {
             </text>
         ]));
     });
-    it("should change when it's clicked (find CSC104 Node)", () => {
-        const nodes = graph.find("Node");
-        const csc104 = nodes.findWhere(node => node.key() === 'csc104');
-        csc104.simulate("click");
-        // ERROR! Invariant Violation: Unable to find node on an unmounted component.
-        // csc104.mount() (ERROR! needs to be the root)
-    });
 
-    it("should change when it's clicked (find CSC104 g element)", () => {
+    it("should should create an info box when hovering over the course", () => {
 
         const csc104 = graph.find("g#csc104")
         csc104.simulate("click");
@@ -56,7 +49,7 @@ describe("Enzyme vs RTF Tests with CSC104", () => {
     //         214 |             // TODO: Differenti        
     });
 
-    it("Hovering should show an info modal (finding the Node component)", () => {
+    it("should should create an info box when hovering over the course", () => {
         // same problem as clicking
         const nodes = graph.find("Node");
         const csc104 = nodes.findWhere(node => node.key() === 'csc104');
@@ -71,7 +64,7 @@ describe("Enzyme vs RTF Tests with CSC104", () => {
         ]));
     });
 
-    it("Hovering should show an info modal (hard-coding the g element)", () => {
+    it("should show an info modal when hovering over the course", () => {
         // same problem as clicking
         const csc104 = graph.find("g#csc104")
         csc104.simulate("mouseover");
@@ -81,7 +74,12 @@ describe("Enzyme vs RTF Tests with CSC104", () => {
         ]));
     });
 
-    it("Hovering shows that the course is red if not selected", () => {
-
+    it("should sets attributes correctly when clicking on course", () => {
+        const nodes = graph.find("Node");
+        const csc104 = nodes.findWhere(node => node.key() === 'csc104');
+        csc104.simulate("click");
+        // ERROR! Invariant Violation: Unable to find node on an unmounted component.
+        // csc104.mount() (ERROR! needs to be the root)
     });
+
 });

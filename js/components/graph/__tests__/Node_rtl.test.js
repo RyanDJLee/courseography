@@ -20,7 +20,7 @@ describe("Node", () => {
     // TODO: Check if it has a sibling rect element?
   });
 
-  it("Should should create an info box when hovering over the course", () => {
+  it("should should create an info box when hovering over the course", () => {
     const { getByText } = render(<Graph {...graphProps} />);
     const courseNode = getByText("CSC104").parentNode;
     // Ensure mouse is not hovering over the course
